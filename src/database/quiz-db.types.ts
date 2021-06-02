@@ -22,24 +22,4 @@ export type Quiz = {
   questions: Questions[];
 };
 
-// export type QuizAnswer = {
-//   questionId: string;
-//   selectedOptionId: string;
-//   isCorrect: boolean;
-// };
-
-// export type TakenQuiz = {
-//   quizId: string;
-//   score: number;
-//   answers: QuizAnswer[];
-// };
-
-// export type UserType = {
-//   id: string;
-//   name: string;
-//   email: string;
-//   token: string;
-//   takenQuizzes: TakenQuiz[];
-// };
-
 export type QuizDatabase = Quiz[];

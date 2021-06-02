@@ -1,5 +1,9 @@
-import React, { Dispatch } from "react";
-import { Quiz, QuizDatabase } from "../quiz-db/quiz-db.types";
+import React from "react";
+import { Quiz, QuizDatabase } from "../database/quiz-db.types";
+
+export type QuizId = {
+  quizId: string;
+};
 
 export type Result = {
   id: string;
@@ -21,7 +25,14 @@ export type State = {
 
 export type QuizContextType = {
   quizState: State;
-  quizDispatch: Dispatch<ActionType>; //React.Dispatch<any>;
+  quizDispatch: React.Dispatch<ActionType>; //React.Dispatch<any>;
 };
 
-export type ActionType = { type: "LOAD_QUIZ"; payload: QuizDatabase };
+export type ActionType =
+  | { type: "START_QUIZ"; payload: QuizId }
+  | { type: "LOAD_QUIZ"; payload: QuizDatabase }
+  | { type: "INITIALIZE_QUES_NUMBER_AND_SCORE" }
+  | { type: "LOAD_CURRENT_QUIZ"; payload: { currentQuiz: Quiz } }
+  | { type: "UPDATE_SCORE"; payload: { points: number } }
+  | { type: "UPDATE_RESULT"; payload: Result }
+  | { type: "INCREMENT_QUESTION_NUMBER"; payload?: number };
