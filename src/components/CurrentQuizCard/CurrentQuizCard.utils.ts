@@ -81,17 +81,21 @@ export const updateScoreAndResult = (
   setOptionId(selectedOption);
   setIsDisabled((disabled) => !disabled);
 
-  quizDispatch({
-    type: "UPDATE_RESULT",
-    payload: {
-      id: questions[currentQuestionNumber].id,
-      hasTaken: true,
-      selectedOption,
-      correctOption: questions[currentQuestionNumber].options.find(
-        (option) => option.isRight
-      )?.id as string,
-    },
-  });
+  const option = questions[currentQuestionNumber].options.find(
+    (option) => option.isRight
+  )?.id;
+
+  if (option !== undefined) {
+    quizDispatch({
+      type: "UPDATE_RESULT",
+      payload: {
+        id: questions[currentQuestionNumber].id,
+        hasTaken: true,
+        selectedOption,
+        correctOption: option,
+      },
+    });
+  }
 
   setTimeout(() => {
     if (currentQuestionNumber === questions.length - 1) {
