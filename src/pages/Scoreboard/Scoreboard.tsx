@@ -1,7 +1,7 @@
 import { Navigate } from "react-router";
 import { DisplayAnswers } from "../../components";
 
-import { useQuiz } from "../../context/quiz-context";
+import { useQuiz } from "../../context/quiz.context";
 import {
   getAttemptedQuestions,
   getCorrectAnswers,

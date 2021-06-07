@@ -1,5 +1,5 @@
-import { Result } from "../../context/quiz-context.types";
-import { Quiz } from "../../database/quiz-db.types";
+import { Result } from "../../context/quiz.context.types";
+import { Quiz } from "../../database/quiz.db.types";
 
 export const getIncorrectAnswers = (resultArray: Result[]): number => {
   const incorrectAnswers = resultArray.filter(

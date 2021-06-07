@@ -1,4 +1,4 @@
-import { useQuiz } from "../../context/quiz-context";
+import { useQuiz } from "../../context/quiz.context";
 import {
   getOptionStyle,
   isCorrectOption,

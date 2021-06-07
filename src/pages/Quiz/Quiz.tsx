@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import { useQuiz } from "../../context/quiz-context";
-import { Quiz } from "../../database/quiz-db.types";
+import { useQuiz } from "../../context/quiz.context";
+import { Quiz } from "../../database/quiz.db.types";
 import { CurrentQuizCard } from "../../components";
 
 export const QuizPage = () => {
@@ -21,6 +21,8 @@ export const QuizPage = () => {
       payload: { currentQuiz: findCurrentQuiz },
     });
   }, []);
+
+  console.log({ quizzes });
 
   return (
     <div>

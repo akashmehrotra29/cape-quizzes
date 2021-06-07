@@ -1,6 +1,6 @@
 import { NavigateFunction } from "react-router";
-import { ActionType } from "../../context/quiz-context.types";
-import { Questions } from "../../database/quiz-db.types";
+import { ActionType } from "../../context/quiz.context.types";
+import { Questions } from "../../database/quiz.db.types";
 
 export const viewScoreboard = (
   navigate: NavigateFunction,

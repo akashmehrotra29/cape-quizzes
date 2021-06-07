@@ -1,4 +1,4 @@
-import { Result } from "../../context/quiz-context.types";
+import { Result } from "../../context/quiz.context.types";
 
 export const isCorrectOption = (
   resultArray: Result[],

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { quizDB } from "../database/quiz-db";
-import { QuizContextType, State } from "./quiz-context.types";
-import { quizReducer } from "../reducers/quiz-reducer";
+import { quizDB } from "../database/quiz.db";
+import { QuizContextType, State } from "./quiz.context.types";
+import { quizReducer } from "../reducers/quiz.reducer";
 
 export const initialState: State = {
   quizzes: quizDB,

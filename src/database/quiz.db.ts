@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { QuizDatabase } from "./quiz-db.types";
+import { QuizDatabase } from "./quiz.db.types";
 
 // userData: {
 //     id: "1234",
@@ -12,7 +12,7 @@ import { QuizDatabase } from "./quiz-db.types";
 export const quizDB: QuizDatabase = [
   {
     id: uuidv4(),
-    topic: "javascript",
+    category: "javascript",
     description: "Test your knowledge of JavaScript",
     playTime: 5,
     maxScore: 10,
@@ -51,7 +51,7 @@ export const quizDB: QuizDatabase = [
         id: uuidv4(),
         question:
           "Which built-in method combines the text of two strings and returns a new string?",
-        points: 10,
+        points: 5,
         negativePoints: -1,
         options: [
           {

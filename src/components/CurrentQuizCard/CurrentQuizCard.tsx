@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useQuiz } from "../../context/quiz-context";
+import { useQuiz } from "../../context/quiz.context";
 import { CurrentQuizCardProp } from "./CurrrentQuizCard.types";
 import {
   nextQuestion,
@@ -10,7 +10,7 @@ import {
 } from "./CurrentQuizCard.utils";
 
 export const CurrentQuizCard = ({
-  currentQuiz: { id, topic, questions },
+  currentQuiz: { id, category: topic, questions },
 }: CurrentQuizCardProp) => {
   const navigate = useNavigate();
 

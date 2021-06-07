@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useQuiz } from "../../context/quiz-context";
+import { useQuiz } from "../../context/quiz.context";
 import { QuizDetailsModalProp } from "./QuizDetailsModal.types";
 
 export const QuizDetailsModal = ({
   setShowModal,
   id,
-  topic,
+  category,
   description,
   playTime,
   maxScore,
@@ -26,7 +26,7 @@ export const QuizDetailsModal = ({
 
   return (
     <div>
-      <div>{topic}</div>
+      <div>{category}</div>
       <div>Total Questions: {questions.length}</div>
       <div> Maximum Score: {maxScore} </div>
       <button onClick={handleCancel}>Cancel</button>

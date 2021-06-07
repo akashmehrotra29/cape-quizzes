@@ -1,5 +1,5 @@
 import React from "react";
-import { Quiz, QuizDatabase } from "../database/quiz-db.types";
+import { Quiz, QuizDatabase } from "../database/quiz.db.types";
 
 export type QuizId = {
   quizId: string;

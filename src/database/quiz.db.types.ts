@@ -14,7 +14,7 @@ export type Questions = {
 
 export type Quiz = {
   id: string;
-  topic: string;
+  category: string;
   description: string;
   playTime: number;
   maxScore: number;
