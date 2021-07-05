@@ -4,10 +4,10 @@ export const showAnswer = (
   optionId: string
 ): string => {
   if (isRight && selectedOption === optionId) {
-    return "green";
+    return "bg-green-500 text-gray-50 hover:bg-green-600";
   }
   if (!isRight && selectedOption === optionId) {
-    return "red";
+    return "bg-red-500 text-gray-50 hover:bg-red-600";
   }
   return "";
 };

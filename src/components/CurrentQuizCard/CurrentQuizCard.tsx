@@ -96,39 +96,104 @@ export const CurrentQuizCard = ({
     }, 1000);
   };
 
-  return (
-    <div>
-      <div>{topic}</div>
-      <div>
-        {currentQuestionNumber + 1}/{questions.length}
-      </div>
-      <div>Score: {score}</div>
-      <div>{questions[currentQuestionNumber].question}</div>
-      <div>
-        {questions[currentQuestionNumber].options.map((option) => {
-          return (
-            <button
-              style={{
-                color: `${
-                  showAnswer(option.id, option.isRight, optionId) &&
-                  showAnswer(option.id, option.isRight, optionId)
-                }`,
-              }}
-              key={option.id}
-              disabled={isDisabled}
-              onClick={() => updateScoreAndResult(option.id, option.isRight)}
-            >
-              {option.text}
-            </button>
-          );
-        })}
-      </div>
+  // return (
+  //   <div>
+  //     <div>{topic}</div>
+  //     <div>
+  //       {currentQuestionNumber + 1}/{questions.length}
+  //     </div>
+  //     <div>Score: {score}</div>
+  //     <div>{questions[currentQuestionNumber].question}</div>
+  //     <div>
+  //       {questions[currentQuestionNumber].options.map((option) => {
+  //         return (
+  //           <button
+  //             style={{
+  //               color: `${
+  //                 showAnswer(option.id, option.isRight, optionId) &&
+  //                 showAnswer(option.id, option.isRight, optionId)
+  //               }`,
+  //             }}
+  //             key={option.id}
+  //             disabled={isDisabled}
+  //             onClick={() => updateScoreAndResult(option.id, option.isRight)}
+  //           >
+  //             {option.text}
+  //           </button>
+  //         );
+  //       })}
+  //     </div>
 
-      {currentQuestionNumber === questions.length - 1 ? (
-        <button onClick={() => viewScoreboard()}>Submit</button>
-      ) : (
-        <button onClick={() => nextQuestion()}>Next Question</button>
-      )}
+  //     {currentQuestionNumber === questions.length - 1 ? (
+  //       <button onClick={() => viewScoreboard()}>Submit</button>
+  //     ) : (
+  //       <button onClick={() => nextQuestion()}>Next Question</button>
+  //     )}
+  //   </div>
+  // );
+
+  return (
+    <div className="max-w-full flex justify-center items-center h-full text-gray-600 dark:text-gray-50">
+      <div className="md:w-2/4 flex flex-col justify-center items-center my-auto">
+        <div className="text-lg font-semibold uppercase border-b-2 border-primary my-6">{`${topic} quiz`}</div>
+        <div className="flex justify-between w-full p-4 text-gray-400">
+          <div>
+            <span className="text-xl"></span>
+            <span className="font-extrabold text-3xl pr-1">
+              Q:{" "}
+              <span className="text-primary">{currentQuestionNumber + 1}</span>/
+              {questions.length}
+            </span>
+          </div>
+          <div>
+            <span className="text-md pr-2"></span>
+            <span className="font-extrabold text-3xl">
+              SCORE: <span className="text-primary">{score}</span>
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center w-4/5 px-2">
+          <div className="text-lg font-semibold mb-8">
+            {questions[currentQuestionNumber].question}
+          </div>
+          <div className="flex flex-col w-full mb-4">
+            {questions[currentQuestionNumber].options.map((option) => {
+              return (
+                <button
+                  className={`bg-gray-100 hover:bg-gray-200 px-4 py-5 rounded-full mb-6 text-xl ${
+                    showAnswer(option.id, option.isRight, optionId)
+                      ? showAnswer(option.id, option.isRight, optionId)
+                      : "dark:bg-gray-700"
+                  }`}
+                  key={option.id}
+                  disabled={isDisabled}
+                  onClick={() =>
+                    updateScoreAndResult(option.id, option.isRight)
+                  }
+                >
+                  {option.text}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {currentQuestionNumber === questions.length - 1 ? (
+          <button
+            className="p-5 bg-primary text-gray-50 font-semibold text-l rounded-full"
+            onClick={viewScoreboard}
+          >
+            Submit Quiz
+          </button>
+        ) : (
+          <button
+            className="p-5 bg-primary text-gray-50 font-semibold text-l rounded-full"
+            onClick={nextQuestion}
+          >
+            Skip Question
+          </button>
+        )}
+      </div>
     </div>
   );
 };
