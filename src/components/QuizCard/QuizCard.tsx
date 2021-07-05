@@ -8,10 +8,7 @@ export const QuizCard = (quiz: Quiz) => {
   return (
     <div className="w-full md:shadow-lg rounded-xl" key={quiz.id}>
       <div className="w-full">
-        <img
-          src="https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_960_720.png"
-          alt={quiz.category}
-        />
+        <img src={quiz.image} alt={quiz.category} />
       </div>
       <div className="text-left p-3">
         <div className="text-lg mb-2 font-semibold">{quiz.category}</div>

@@ -2,12 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useQuiz } from "../../context/quiz.context";
 import { CurrentQuizCardProp } from "./CurrrentQuizCard.types";
-import {
-  nextQuestion,
-  showAnswer,
-  updateScoreAndResult,
-  viewScoreboard,
-} from "./CurrentQuizCard.utils";
+import { showAnswer } from "./CurrentQuizCard.utils";
 
 export const CurrentQuizCard = ({
   currentQuiz: { id, category: topic, questions },
@@ -21,6 +16,85 @@ export const CurrentQuizCard = ({
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [optionId, setOptionId] = useState<string>("");
+
+  const viewScoreboard = () => {
+    navigate(`/quiz/${id}/scoreboard`, { replace: true });
+
+    if (!optionId) {
+      quizDispatch({
+        type: "UPDATE_RESULT",
+        payload: {
+          id: questions[currentQuestionNumber].id,
+          hasTaken: false,
+          selectedOption: "",
+          correctOption: questions[currentQuestionNumber].options.find(
+            (option) => option.isRight === true
+          )?.id as string,
+        },
+      });
+    }
+  };
+
+  const nextQuestion = () => {
+    quizDispatch({ type: "INCREMENT_QUESTION_NUMBER" });
+    setIsDisabled(false);
+
+    if (!optionId) {
+      quizDispatch({
+        type: "UPDATE_RESULT",
+        payload: {
+          id: questions[currentQuestionNumber].id,
+          hasTaken: false,
+          selectedOption: "",
+          correctOption: questions[currentQuestionNumber].options.find(
+            (option) => option.isRight === true
+          )?.id as string,
+        },
+      });
+    }
+
+    setOptionId("");
+  };
+
+  const updateScoreAndResult = (selectedOption: string, isRight: boolean) => {
+    if (isRight) {
+      quizDispatch({
+        type: "UPDATE_SCORE",
+        payload: { points: questions[currentQuestionNumber].points },
+      });
+    } else {
+      quizDispatch({
+        type: "UPDATE_SCORE",
+        payload: { points: questions[currentQuestionNumber].negativePoints },
+      });
+    }
+
+    setOptionId(selectedOption);
+    setIsDisabled((disabled) => !disabled);
+
+    const option = questions[currentQuestionNumber].options.find(
+      (option) => option.isRight
+    )?.id;
+
+    if (option !== undefined) {
+      quizDispatch({
+        type: "UPDATE_RESULT",
+        payload: {
+          id: questions[currentQuestionNumber].id,
+          hasTaken: true,
+          selectedOption,
+          correctOption: option,
+        },
+      });
+    }
+
+    setTimeout(() => {
+      if (currentQuestionNumber === questions.length - 1) {
+        viewScoreboard();
+      }
+      nextQuestion();
+    }, 1000);
+  };
 
   return (
     <div>
@@ -42,19 +116,7 @@ export const CurrentQuizCard = ({
               }}
               key={option.id}
               disabled={isDisabled}
-              onClick={() =>
-                updateScoreAndResult(
-                  option.id,
-                  option.isRight,
-                  quizDispatch,
-                  questions,
-                  currentQuestionNumber,
-                  setOptionId,
-                  setIsDisabled,
-                  navigate,
-                  id
-                )
-              }
+              onClick={() => updateScoreAndResult(option.id, option.isRight)}
             >
               {option.text}
             </button>
@@ -63,35 +125,9 @@ export const CurrentQuizCard = ({
       </div>
 
       {currentQuestionNumber === questions.length - 1 ? (
-        <button
-          onClick={() =>
-            viewScoreboard(
-              navigate,
-              id,
-              optionId,
-              quizDispatch,
-              questions,
-              currentQuestionNumber
-            )
-          }
-        >
-          Submit
-        </button>
+        <button onClick={() => viewScoreboard()}>Submit</button>
       ) : (
-        <button
-          onClick={() =>
-            nextQuestion(
-              quizDispatch,
-              setIsDisabled,
-              optionId,
-              questions,
-              currentQuestionNumber,
-              setOptionId
-            )
-          }
-        >
-          Next Question
-        </button>
+        <button onClick={() => nextQuestion()}>Next Question</button>
       )}
     </div>
   );

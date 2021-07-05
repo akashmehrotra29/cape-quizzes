@@ -12,11 +12,12 @@ import { QuizDatabase } from "./quiz.db.types";
 export const quizDB: QuizDatabase = [
   {
     id: uuidv4(),
-    category: "javascript",
+    category: "Javascript",
     description: "Test your knowledge of JavaScript",
     playTime: 5,
     maxScore: 10,
-    image: "",
+    image:
+      "https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_960_720.png",
     questions: [
       {
         id: uuidv4(),

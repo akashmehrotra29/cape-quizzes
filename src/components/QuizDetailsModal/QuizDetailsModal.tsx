@@ -25,6 +25,7 @@ export const QuizDetailsModal = ({
   };
 
   const handleStartQuiz = () => {
+    setShowModal(false);
     quizDispatch({ type: "START_QUIZ", payload: { quizId: id } });
     quizDispatch({ type: "INITIALIZE_QUES_NUMBER_AND_SCORE" });
   };
@@ -47,7 +48,7 @@ export const QuizDetailsModal = ({
         as="div"
         static
         className="fixed z-10 inset-0 overflow-y-auto"
-        initialFocus={cancelButtonRef}
+        // initialFocus={cancelButtonRef}
         open={open}
         onClose={setOpen}
       >
@@ -109,7 +110,7 @@ export const QuizDetailsModal = ({
                 <Link to={`/quiz/${id}`}>
                   <button
                     type="button"
-                    className="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:hover sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={() => {
                       setOpen(false);
                       handleStartQuiz();

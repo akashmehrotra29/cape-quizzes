@@ -20,7 +20,7 @@ export const QuizPage = () => {
       type: "LOAD_CURRENT_QUIZ",
       payload: { currentQuiz: findCurrentQuiz },
     });
-  }, []);
+  }, [quizzes]);
 
   console.log({ quizzes });
 
