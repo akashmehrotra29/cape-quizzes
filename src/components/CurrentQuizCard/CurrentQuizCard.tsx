@@ -5,7 +5,7 @@ import { CurrentQuizCardProp } from "./CurrrentQuizCard.types";
 import { showAnswer } from "./CurrentQuizCard.utils";
 
 export const CurrentQuizCard = ({
-  currentQuiz: { id, category: topic, questions },
+  currentQuiz: { _id, category: topic, questions },
 }: CurrentQuizCardProp) => {
   const navigate = useNavigate();
 
@@ -18,18 +18,18 @@ export const CurrentQuizCard = ({
   const [optionId, setOptionId] = useState<string>("");
 
   const viewScoreboard = () => {
-    navigate(`/quiz/${id}/scoreboard`, { replace: true });
+    navigate(`/quiz/${_id}/scoreboard`, { replace: true });
 
     if (!optionId) {
       quizDispatch({
         type: "UPDATE_RESULT",
         payload: {
-          id: questions[currentQuestionNumber].id,
+          id: questions[currentQuestionNumber]._id,
           hasTaken: false,
           selectedOption: "",
           correctOption: questions[currentQuestionNumber].options.find(
             (option) => option.isRight === true
-          )?.id as string,
+          )?._id as string,
         },
       });
     }
@@ -43,12 +43,12 @@ export const CurrentQuizCard = ({
       quizDispatch({
         type: "UPDATE_RESULT",
         payload: {
-          id: questions[currentQuestionNumber].id,
+          id: questions[currentQuestionNumber]._id,
           hasTaken: false,
           selectedOption: "",
           correctOption: questions[currentQuestionNumber].options.find(
             (option) => option.isRight === true
-          )?.id as string,
+          )?._id as string,
         },
       });
     }
@@ -74,13 +74,13 @@ export const CurrentQuizCard = ({
 
     const option = questions[currentQuestionNumber].options.find(
       (option) => option.isRight
-    )?.id;
+    )?._id;
 
     if (option !== undefined) {
       quizDispatch({
         type: "UPDATE_RESULT",
         payload: {
-          id: questions[currentQuestionNumber].id,
+          id: questions[currentQuestionNumber]._id,
           hasTaken: true,
           selectedOption,
           correctOption: option,
@@ -88,12 +88,12 @@ export const CurrentQuizCard = ({
       });
     }
 
-    setTimeout(() => {
-      if (currentQuestionNumber === questions.length - 1) {
-        viewScoreboard();
-      }
-      nextQuestion();
-    }, 1000);
+    // setTimeout(() => {
+    //   if (currentQuestionNumber === questions.length - 1) {
+    //     viewScoreboard();
+    //   }
+    //   nextQuestion();
+    // }, 1000);
   };
 
   return (
@@ -125,14 +125,14 @@ export const CurrentQuizCard = ({
               return (
                 <button
                   className={`bg-gray-100 hover:bg-gray-200 px-4 py-5 rounded-full mb-6 text-xl ${
-                    showAnswer(option.id, option.isRight, optionId)
-                      ? showAnswer(option.id, option.isRight, optionId)
+                    showAnswer(option._id, option.isRight, optionId)
+                      ? showAnswer(option._id, option.isRight, optionId)
                       : "dark:bg-gray-700"
                   }`}
-                  key={option.id}
+                  key={option._id}
                   disabled={isDisabled}
                   onClick={() =>
-                    updateScoreAndResult(option.id, option.isRight)
+                    updateScoreAndResult(option._id, option.isRight)
                   }
                 >
                   {option.text}
@@ -154,7 +154,7 @@ export const CurrentQuizCard = ({
             className="p-3 bg-primary text-gray-50 font-semibold text-l rounded-full"
             onClick={nextQuestion}
           >
-            Skip Question
+            Next Question
           </button>
         )}
       </div>

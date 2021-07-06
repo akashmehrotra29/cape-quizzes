@@ -18,7 +18,7 @@ export const DisplayAnswers = () => {
           return (
             <div
               className="flex flex-col justify-center items-center px-1"
-              key={question.id}
+              // key={question._id}
             >
               <div className="text-lg font-semibold mb-4 md: w-4/5 md:text-left">
                 {index + 1}. {question.question}
@@ -29,19 +29,19 @@ export const DisplayAnswers = () => {
                     <div
                       className={`bg-gray-100 px-4 py-3 rounded-full mb-4 text-left  ${getOptionStyle(
                         result.resultArray,
-                        option.id,
-                        question.id
+                        option._id,
+                        question._id
                       )}`}
                     >
                       {isOptionSelected(
                         result.resultArray,
-                        option.id,
-                        question.id
+                        option._id,
+                        question._id
                       ) ? (
                         isCorrectOption(
                           result.resultArray,
-                          option.id,
-                          question.id
+                          option._id,
+                          question._id
                         ) ? (
                           <div className="flex justify-between items-center">
                             <span>{option.text}</span>

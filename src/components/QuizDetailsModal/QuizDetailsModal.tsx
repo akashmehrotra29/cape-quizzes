@@ -7,11 +7,10 @@ import { QuizDetailsModalProp } from "./QuizDetailsModal.types";
 
 export const QuizDetailsModal = ({
   setShowModal,
-  id,
+  _id,
   category,
   description,
   playTime,
-  maxScore,
   image,
   questions,
 }: QuizDetailsModalProp): JSX.Element => {
@@ -26,21 +25,9 @@ export const QuizDetailsModal = ({
 
   const handleStartQuiz = () => {
     setShowModal(false);
-    quizDispatch({ type: "START_QUIZ", payload: { quizId: id } });
+    quizDispatch({ type: "START_QUIZ", payload: { quizId: _id } });
     quizDispatch({ type: "INITIALIZE_QUES_NUMBER_AND_SCORE" });
   };
-
-  // return (
-  //   <div>
-  //     <div>{category}</div>
-  //     <div>Total Questions: {questions.length}</div>
-  //     <div> Maximum Score: {maxScore} </div>
-  //     <button onClick={handleCancel}>Cancel</button>
-  //     <Link to={`/quiz/${id}`}>
-  //       <button onClick={handleStartQuiz}>Start Quiz</button>
-  //     </Link>
-  //   </div>
-  // );
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -99,15 +86,14 @@ export const QuizDetailsModal = ({
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">Topic: {category}</p>
-                      <p className="text-sm text-gray-500">
-                        Maximum Score: {maxScore}
-                      </p>
+                      {/* calculate max score from array */}
+                      <p className="text-sm text-gray-500">Maximum Score: 10</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <Link to={`/quiz/${id}`}>
+                <Link to={`/quiz/${_id}`}>
                   <button
                     type="button"
                     className="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:hover sm:ml-3 sm:w-auto sm:text-sm"

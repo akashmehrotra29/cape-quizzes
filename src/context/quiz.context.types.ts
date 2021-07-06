@@ -5,6 +5,32 @@ export type QuizId = {
   quizId: string;
 };
 
+export type User = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  userName: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type LeaderBoard = {
+  _id: string;
+  numberOfAttempts: Number;
+  quizId: Quiz;
+  score: Number;
+  userId: User;
+};
+
+export type ScoreBoard = {
+  _id: string;
+  numberOfAttempts: Number;
+  quizId: Quiz;
+  score: Number;
+  userId: String;
+};
+
 export type Result = {
   id: string;
   hasTaken: boolean;
@@ -21,6 +47,8 @@ export type State = {
     resultArray: Result[];
   };
   currentQuiz: null | Quiz;
+  currentUserScoreBoard: ScoreBoard[];
+  leaderBoard: LeaderBoard[];
 };
 
 export type QuizContextType = {
@@ -30,7 +58,7 @@ export type QuizContextType = {
 
 export type ActionType =
   | { type: "START_QUIZ"; payload: QuizId }
-  | { type: "LOAD_QUIZ"; payload: QuizDatabase }
+  | { type: "LOAD_QUIZZES"; payload: QuizDatabase }
   | { type: "INITIALIZE_QUES_NUMBER_AND_SCORE" }
   | { type: "LOAD_CURRENT_QUIZ"; payload: { currentQuiz: Quiz } }
   | { type: "UPDATE_SCORE"; payload: { points: number } }

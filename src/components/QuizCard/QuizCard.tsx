@@ -6,7 +6,7 @@ export const QuizCard = (quiz: Quiz) => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
-    <div className="w-full md:shadow-lg rounded-xl" key={quiz.id}>
+    <div className="w-full md:shadow-lg rounded-xl" key={quiz._id}>
       <div className="w-full">
         <img src={quiz.image} alt={quiz.category} />
       </div>

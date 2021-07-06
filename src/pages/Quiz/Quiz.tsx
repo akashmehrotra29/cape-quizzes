@@ -13,7 +13,7 @@ export const QuizPage = () => {
 
   useEffect(() => {
     const findCurrentQuiz = quizzes.find((quiz) => {
-      return quiz.id === quizId;
+      return quiz._id === quizId;
     }) as Quiz;
 
     quizDispatch({

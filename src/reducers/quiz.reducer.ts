@@ -2,6 +2,12 @@ import { ActionType, State } from "../context/quiz.context.types";
 
 export const quizReducer = (state: State, action: ActionType): State => {
   switch (action.type) {
+    case "LOAD_QUIZZES":
+      return {
+        ...state,
+        quizzes: action.payload,
+      };
+
     case "START_QUIZ":
       return {
         ...state,

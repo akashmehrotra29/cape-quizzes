@@ -15,6 +15,8 @@ export const Scoreboard = () => {
     quizState: { currentQuiz, score, result },
   } = useQuiz();
 
+  console.log({result})
+
   return currentQuiz ? (
     <div>
       <div className="flex items-center justify-center">
