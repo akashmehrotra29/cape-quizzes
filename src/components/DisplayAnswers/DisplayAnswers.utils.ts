@@ -28,13 +28,13 @@ export const getOptionStyle = (
   questionId: string
 ): string => {
   if (isCorrectOption(resultArray, optionId, questionId)) {
-    return "green";
+    return "bg-green-500 text-gray-50 hover:bg-green-600";
   }
   if (
     isOptionSelected(resultArray, optionId, questionId) &&
     !isCorrectOption(resultArray, optionId, questionId)
   ) {
-    return "red";
+    return "bg-red-500 text-gray-50 hover:bg-red-600";
   }
   return "";
 };

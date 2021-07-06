@@ -11,55 +11,59 @@ export const DisplayAnswers = () => {
   } = useQuiz();
 
   return (
-    <div>
-      {currentQuiz?.questions.map((question, index) => {
-        return (
-          <div key={question.id}>
-            <div>
-              {index + 1}. {question.question}
-            </div>
-            <div>
-              {question.options.map((option) => {
-                return (
-                  <div
-                    style={{
-                      color: `${getOptionStyle(
+    <div className="mt-24 flex flex-col justify-center items-center my-auto">
+      <div className="text-2xl font-semibold mb-6"> Answers</div>
+      <div className="md:w-3/5 ">
+        {currentQuiz?.questions.map((question, index) => {
+          return (
+            <div
+              className="flex flex-col justify-center items-center px-1"
+              key={question.id}
+            >
+              <div className="text-lg font-semibold mb-4 md: w-4/5 md:text-left">
+                {index + 1}. {question.question}
+              </div>
+              <div className="flex flex-col w-4/5 mb-4">
+                {question.options.map((option) => {
+                  return (
+                    <div
+                      className={`bg-gray-100 px-4 py-3 rounded-full mb-4 text-left  ${getOptionStyle(
                         result.resultArray,
                         option.id,
                         question.id
-                      )}`,
-                    }}
-                  >
-                    {isOptionSelected(
-                      result.resultArray,
-                      option.id,
-                      question.id
-                    ) ? (
-                      isCorrectOption(
+                      )}`}
+                    >
+                      {isOptionSelected(
                         result.resultArray,
                         option.id,
                         question.id
                       ) ? (
-                        <div>
-                          {option.text}
-                          <span> Correct</span>
-                        </div>
+                        isCorrectOption(
+                          result.resultArray,
+                          option.id,
+                          question.id
+                        ) ? (
+                          <div className="flex justify-between items-center">
+                            <span>{option.text}</span>
+                            {/* <CheckCircleIcon /> */}
+                          </div>
+                        ) : (
+                          <div className="flex justify-between items-center">
+                            <span>{option.text}</span>
+                            {/* <CancelIcon /> */}
+                          </div>
+                        )
                       ) : (
-                        <div>
-                          {option.text}
-                          <span> Incorrect</span>
-                        </div>
-                      )
-                    ) : (
-                      option.text
-                    )}
-                  </div>
-                );
-              })}
+                        option.text
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

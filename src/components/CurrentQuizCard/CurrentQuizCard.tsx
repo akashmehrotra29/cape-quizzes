@@ -96,42 +96,6 @@ export const CurrentQuizCard = ({
     }, 1000);
   };
 
-  // return (
-  //   <div>
-  //     <div>{topic}</div>
-  //     <div>
-  //       {currentQuestionNumber + 1}/{questions.length}
-  //     </div>
-  //     <div>Score: {score}</div>
-  //     <div>{questions[currentQuestionNumber].question}</div>
-  //     <div>
-  //       {questions[currentQuestionNumber].options.map((option) => {
-  //         return (
-  //           <button
-  //             style={{
-  //               color: `${
-  //                 showAnswer(option.id, option.isRight, optionId) &&
-  //                 showAnswer(option.id, option.isRight, optionId)
-  //               }`,
-  //             }}
-  //             key={option.id}
-  //             disabled={isDisabled}
-  //             onClick={() => updateScoreAndResult(option.id, option.isRight)}
-  //           >
-  //             {option.text}
-  //           </button>
-  //         );
-  //       })}
-  //     </div>
-
-  //     {currentQuestionNumber === questions.length - 1 ? (
-  //       <button onClick={() => viewScoreboard()}>Submit</button>
-  //     ) : (
-  //       <button onClick={() => nextQuestion()}>Next Question</button>
-  //     )}
-  //   </div>
-  // );
-
   return (
     <div className="max-w-full flex justify-center items-center h-full text-gray-600 dark:text-gray-50">
       <div className="md:w-2/4 flex flex-col justify-center items-center my-auto">
@@ -180,14 +144,14 @@ export const CurrentQuizCard = ({
 
         {currentQuestionNumber === questions.length - 1 ? (
           <button
-            className="p-5 bg-primary text-gray-50 font-semibold text-l rounded-full"
+            className="p-3 bg-primary text-gray-50 font-semibold text-l rounded-full"
             onClick={viewScoreboard}
           >
             Submit Quiz
           </button>
         ) : (
           <button
-            className="p-5 bg-primary text-gray-50 font-semibold text-l rounded-full"
+            className="p-3 bg-primary text-gray-50 font-semibold text-l rounded-full"
             onClick={nextQuestion}
           >
             Skip Question
