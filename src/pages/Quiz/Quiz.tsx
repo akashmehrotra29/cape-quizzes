@@ -22,8 +22,6 @@ export const QuizPage = () => {
     });
   }, [quizzes]);
 
-  console.log({ quizzes });
-
   return (
     <div>
       {currentQuiz && currentQuiz.questions[currentQuestionNumber] ? (

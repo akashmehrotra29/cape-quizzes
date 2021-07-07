@@ -49,42 +49,6 @@ export const Login = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  //   return (
-  //     <div>
-  //       <form onSubmit={(e) => handleFormSubmit(e)}>
-  //         <label>Email</label>
-  //         <input
-  //           type="text"
-  //           placeholder="Email"
-  //           value={user.email}
-  //           onChange={(e) => handleFormInput(e)}
-  //         />
-  //         {formError.email && (
-  //           <span className="block font-semibold font-sm text-red-600">
-  //             *{formError.email}
-  //           </span>
-  //         )}
-
-  //         <label>Password</label>
-  //         <input
-  //           type="password"
-  //           placeholder="Password"
-  //           value={user.password}
-  //           name="password"
-  //           onChange={(e) => handleFormInput(e)}
-  //         />
-  //         {formError.password && (
-  //           <span className="block font-semibold text-red-600">
-  //             *{formError.password}
-  //           </span>
-  //         )}
-
-  //         <button>Login</button>
-  //         <div>{loginError}</div>
-  //       </form>
-  //     </div>
-  //   );
-
   return (
     <div className="flex justify-between min-h-screen">
       <div className="flex flex-col items-center mx-4 justify-center w-full md:w-1/2 text-gray-500 dark:text-gray-50">

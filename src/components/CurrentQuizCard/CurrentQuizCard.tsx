@@ -1,23 +1,30 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useQuiz } from "../../context/quiz.context";
 import { CurrentQuizCardProp } from "./CurrrentQuizCard.types";
 import { showAnswer } from "./CurrentQuizCard.utils";
+import { useAuth } from "../../context/auth.context";
+import { API } from "../../utils/api.config";
+import axios from "axios";
 
 export const CurrentQuizCard = ({
   currentQuiz: { _id, category: topic, questions },
 }: CurrentQuizCardProp) => {
   const navigate = useNavigate();
+  const { quizId } = useParams();
 
   const {
-    quizState: { currentQuestionNumber, score },
+    quizState: { currentQuestionNumber, score, result },
     quizDispatch,
   } = useQuiz();
+  const {
+    authState: { token },
+  } = useAuth();
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [optionId, setOptionId] = useState<string>("");
 
-  const viewScoreboard = () => {
+  const viewScoreboard = async () => {
     navigate(`/quiz/${_id}/scoreboard`, { replace: true });
 
     if (!optionId) {
@@ -33,6 +40,38 @@ export const CurrentQuizCard = ({
         },
       });
     }
+
+    if (token) {
+      try {
+        const {
+          data: { attemptedQuizDetails },
+          status,
+        } = await axios({
+          method: "POST",
+          url: `${API}/scoreboard`,
+          data: {
+            score: score,
+            quizId,
+            resultArray: result.resultArray,
+          },
+          headers: {
+            authorization: token,
+          },
+        });
+
+        if (status === 200)
+          quizDispatch({
+            type: "LOAD_CURRENT_USER_SCORE_BOARD",
+            payload: attemptedQuizDetails,
+          });
+
+        console.log({ attemptedQuizDetails });
+      } catch (error) {
+        console.error({ error });
+      }
+    }
+
+    navigate(`/quiz/${_id}/scoreboard`, { replace: true });
   };
 
   const nextQuestion = () => {

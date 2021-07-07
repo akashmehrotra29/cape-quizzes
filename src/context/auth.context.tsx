@@ -100,9 +100,6 @@ export const AuthProvider: React.FC = ({ children }) => {
     });
   };
 
-  console.log("form context");
-  console.log({ authState });
-
   return (
     <authContext.Provider
       value={{ authState, authDispatch, signUpUser, loginUser, logoutUser }}

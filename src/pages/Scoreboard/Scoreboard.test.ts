@@ -1,4 +1,3 @@
-import { quizDB } from "../../database/quiz.db";
 import {
   getAttemptedQuestions,
   getCorrectAnswers,

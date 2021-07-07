@@ -63,4 +63,5 @@ export type ActionType =
   | { type: "LOAD_CURRENT_QUIZ"; payload: { currentQuiz: Quiz } }
   | { type: "UPDATE_SCORE"; payload: { points: number } }
   | { type: "UPDATE_RESULT"; payload: Result }
-  | { type: "INCREMENT_QUESTION_NUMBER"; payload?: number };
+  | { type: "INCREMENT_QUESTION_NUMBER"; payload?: number }
+  | { type: "LOAD_CURRENT_USER_SCORE_BOARD"; payload: ScoreBoard[] };
