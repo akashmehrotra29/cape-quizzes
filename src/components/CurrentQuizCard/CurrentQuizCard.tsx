@@ -65,7 +65,7 @@ export const CurrentQuizCard = ({
             payload: attemptedQuizDetails,
           });
 
-        console.log({ attemptedQuizDetails });
+        console.log({attemptedQuizDetails})
       } catch (error) {
         console.error({ error });
       }

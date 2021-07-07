@@ -73,4 +73,5 @@ export type ActionType =
   | { type: "UPDATE_RESULT"; payload: Result }
   | { type: "INCREMENT_QUESTION_NUMBER"; payload?: number }
   | { type: "LOAD_CURRENT_USER_SCORE_BOARD"; payload: ScoreBoard[] }
-  | { type: "UPDATE_QUIZID"; payload: string };
+  | { type: "UPDATE_QUIZID"; payload: string }
+  | { type: "SET_LEADERBOARD"; payload: LeaderBoard[] };

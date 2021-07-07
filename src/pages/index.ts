@@ -5,3 +5,4 @@ export { Scoreboard } from "./Scoreboard/Scoreboard";
 export { Login } from "./Login/Login";
 export { Signup } from "./Signup/Signup";
 export { UserScoreboard } from "./UserScoreboard/UserScoreboard";
+export { Leaderboard } from "./Leaderboard/Leaderboard";

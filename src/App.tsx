@@ -8,6 +8,7 @@ import {
   Login,
   Signup,
   UserScoreboard,
+  Leaderboard,
 } from "./pages";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/profile/:username" element={<UserScoreboard />}></Route>
+        <Route path="/leaderboard" element={<Leaderboard />}></Route>
       </Routes>
     </div>
   );
