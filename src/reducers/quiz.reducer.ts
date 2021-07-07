@@ -19,7 +19,7 @@ export const quizReducer = (state: State, action: ActionType): State => {
       };
 
     case "INITIALIZE_QUES_NUMBER_AND_SCORE":
-      return { ...state, currentQuestionNumber: 0, score: 0 };
+      return { ...state, currentQuestionNumber: 0, score: 0,  };
 
     case "LOAD_CURRENT_QUIZ":
       return { ...state, currentQuiz: action.payload.currentQuiz };
@@ -44,6 +44,12 @@ export const quizReducer = (state: State, action: ActionType): State => {
 
     case "LOAD_CURRENT_USER_SCORE_BOARD":
       return { ...state, currentUserScoreBoard: action.payload };
+
+    case "UPDATE_QUIZID":
+      return {
+        ...state,
+        result: { ...state.result, quizId: action.payload, resultArray: [] },
+      };
 
     default:
       return state;

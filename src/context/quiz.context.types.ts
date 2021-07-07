@@ -23,12 +23,20 @@ export type LeaderBoard = {
   userId: User;
 };
 
+export type ResultArray = {
+  id: String;
+  hasTaken: Boolean;
+  selectedOption: String;
+  correctOpton: String;
+};
+
 export type ScoreBoard = {
   _id: string;
   numberOfAttempts: Number;
   quizId: Quiz;
   score: Number;
   userId: String;
+  resultArray: [ResultArray];
 };
 
 export type Result = {
@@ -64,4 +72,5 @@ export type ActionType =
   | { type: "UPDATE_SCORE"; payload: { points: number } }
   | { type: "UPDATE_RESULT"; payload: Result }
   | { type: "INCREMENT_QUESTION_NUMBER"; payload?: number }
-  | { type: "LOAD_CURRENT_USER_SCORE_BOARD"; payload: ScoreBoard[] };
+  | { type: "LOAD_CURRENT_USER_SCORE_BOARD"; payload: ScoreBoard[] }
+  | { type: "UPDATE_QUIZID"; payload: string };

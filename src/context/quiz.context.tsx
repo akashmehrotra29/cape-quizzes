@@ -1,13 +1,9 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-} from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { QuizContextType, State } from "./quiz.context.types";
 import { quizReducer } from "../reducers/quiz.reducer";
 import { API } from "../utils/api.config";
 import axios from "axios";
+import { useAuth } from "./auth.context";
 
 export const initialState: State = {
   quizzes: [],
