@@ -1,8 +1,6 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Dashboard, QuizPage, Scoreboard } from "./pages";
+import { Home, Dashboard, QuizPage, Scoreboard, Login, Signup } from "./pages";
 
 function App() {
   return (
@@ -12,6 +10,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/quiz/:quizId" element={<QuizPage />}></Route>
         <Route path="/quiz/:quizId/scoreboard" element={<Scoreboard />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
       </Routes>
     </div>
   );
