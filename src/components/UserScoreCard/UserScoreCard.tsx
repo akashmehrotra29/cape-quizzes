@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 export const UserScoreCard = ({ quizRecord }: { quizRecord: ScoreBoard }) => {
   const { _id, quizId: quiz, score, numberOfAttempts } = quizRecord;
-  console.log({ quizRecord });
+
   const {
     authState: { token },
   } = useAuth();

@@ -36,8 +36,6 @@ export const Leaderboard = () => {
       <div className="flex justify-center items-center flex-col mx-4">
         <div className="font-extrabold text-4xl my-6">LeaderBoard</div>
         {leaderBoard.map((user) => {
-          console.log({ user });
-
           return (
             <div
               key={user._id}
