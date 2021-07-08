@@ -80,7 +80,7 @@ export const Navbar = () => {
             </NavLink>
             <NavLink
               to="/login"
-              className="font-semibold text-white text-lg mr-8"
+              className="font-semibold text-white text-lg mr-2"
             >
               Login
             </NavLink>
