@@ -1,5 +1,5 @@
 import { Navigate } from "react-router";
-import { DisplayAnswers } from "../../components";
+import { DisplayAnswers, Navbar } from "../../components";
 
 import { useQuiz } from "../../context/quiz.context";
 import {
@@ -17,14 +17,15 @@ export const Scoreboard = () => {
 
   return currentQuiz ? (
     <div>
+      <Navbar />
       <div className="flex items-center justify-center">
-        <div className="text-lg font-semibold uppercase border-b-2 border-primary my-6">
+        <div className="text-4xl font-semibold border-b-2 border-primary my-6 dark:text-gray-50">
           Scoreboard
         </div>
       </div>
-      <div className="min-w-screen flex items-center justify-center px-5 pt-5 pb-1 rounded-b-xl">
+      <div className="min-w-screen flex items-center justify-center px-5 pt-5 pb-1 rounded-b-xl dark:bg-grey-800">
         <div className="w-full max-w-lg mx-auto">
-          <div className="px-7 bg-white shadow-lg rounded-xl">
+          <div className="px-7 bg-white dark:bg-gray-800 shadow-lg rounded-xl">
             <div className="flex ">
               <div className="flex justify-between w-full p-4 text-gray-400">
                 <div>

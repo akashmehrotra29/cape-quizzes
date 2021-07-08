@@ -10,15 +10,27 @@ export const DisplayAnswers = () => {
     quizState: { currentQuiz, result },
   } = useQuiz();
 
+  const getStyleForOptions = (optionId: string, questionId: string) => {
+    const rightAndWrongStyles = getOptionStyle(
+      result.resultArray,
+      optionId,
+      questionId
+    );
+    return rightAndWrongStyles ? rightAndWrongStyles : "dark:bg-gray-700";
+  };
+
   return (
     <div className="mt-24 flex flex-col justify-center items-center my-auto">
-      <div className="text-2xl font-semibold mb-6"> Answers</div>
+      <div className="text-3xl font-semibold mb-6 dark:text-gray-50">
+        {" "}
+        Answers
+      </div>
       <div className="md:w-3/5 ">
         {currentQuiz?.questions.map((question, index) => {
           return (
             <div
               className="flex flex-col justify-center items-center px-1"
-              // key={question._id}
+              key={question._id}
             >
               <div className="text-lg font-semibold mb-4 md: w-4/5 md:text-left">
                 {index + 1}. {question.question}
@@ -27,8 +39,7 @@ export const DisplayAnswers = () => {
                 {question.options.map((option) => {
                   return (
                     <div
-                      className={`bg-gray-100 px-4 py-3 rounded-full mb-4 text-left  ${getOptionStyle(
-                        result.resultArray,
+                      className={`bg-gray-100 px-4 py-3 rounded-full mb-4 text-left  ${getStyleForOptions(
                         option._id,
                         question._id
                       )}`}
@@ -45,12 +56,10 @@ export const DisplayAnswers = () => {
                         ) ? (
                           <div className="flex justify-between items-center">
                             <span>{option.text}</span>
-                            {/* <CheckCircleIcon /> */}
                           </div>
                         ) : (
                           <div className="flex justify-between items-center">
                             <span>{option.text}</span>
-                            {/* <CancelIcon /> */}
                           </div>
                         )
                       ) : (

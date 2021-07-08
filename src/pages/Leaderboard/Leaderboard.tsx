@@ -4,6 +4,7 @@ import { getTotalScore } from "../Scoreboard/Scoreboard.util";
 import axios from "axios";
 import { useEffect } from "react";
 import { FaTrophy } from "react-icons/fa";
+import { Navbar } from "../../components";
 
 export const Leaderboard = () => {
   const {
@@ -31,11 +32,9 @@ export const Leaderboard = () => {
 
   return (
     <>
-      {/* <Header /> */}
+      <Navbar />
       <div className="flex justify-center items-center flex-col mx-4">
-        <div className="font-extrabold text-4xl my-6 text-grey-500">
-          LeaderBoard
-        </div>
+        <div className="font-extrabold text-4xl my-6">LeaderBoard</div>
         {leaderBoard.map((user) => {
           console.log({ user });
 

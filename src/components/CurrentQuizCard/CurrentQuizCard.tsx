@@ -65,7 +65,7 @@ export const CurrentQuizCard = ({
             payload: attemptedQuizDetails,
           });
 
-        console.log({attemptedQuizDetails})
+        console.log({ attemptedQuizDetails });
       } catch (error) {
         console.error({ error });
       }
@@ -138,7 +138,7 @@ export const CurrentQuizCard = ({
   return (
     <div className="max-w-full flex justify-center items-center h-full text-gray-600 dark:text-gray-50">
       <div className="md:w-2/4 flex flex-col justify-center items-center my-auto">
-        <div className="text-lg font-semibold uppercase border-b-2 border-primary my-6">{`${topic} quiz`}</div>
+        <div className="text-4xl font-semibold border-b-2 border-primary my-6">{`${topic} Quiz`}</div>
         <div className="flex justify-between w-full p-4 text-gray-400">
           <div>
             <span className="text-xl"></span>

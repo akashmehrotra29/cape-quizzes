@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth.context";
 import { useQuiz } from "../../context/quiz.context";
-import { UserScoreCard } from "../../components";
+import { Navbar, UserScoreCard } from "../../components";
 
 import { useEffect } from "react";
 import axios from "axios";
@@ -41,7 +41,7 @@ export const UserScoreboard = () => {
 
   return (
     <div>
-      {/* <Header /> */}
+      <Navbar />
       <div className="mt-10 text-3xl font-extrabold">
         {firstName}'s ScoreBoard
       </div>
