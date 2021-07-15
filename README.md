@@ -1,4 +1,29 @@
-# Getting Started with Create React App
+# Capequizzes
+A quiz app to test your knowledge and learning.
+
+Deployed App Link: [https://capequizzes.netlify.app](https://capequizzes.netlify.app)
+
+[Backend Repo](https://github.com/akashmehrotra29/cape-quizzes-backend/tree/development)
+
+---
+## Tech Stack
+- React JS 
+- Typescript 
+- Tailwind CSS
+- Express JS & Mongoose (in Backend)
+
+## Features
+- View detailed quiz results in scoreboard
+- User profile page 
+- Stored scores of taken quizzes
+- Leaderboard for top 5 performers
+- Authentication using JSON Web Token (JWT) with login and signup
+- Authentication persistence using local storage
+- Dark mode
+- Responsive and intuitive design
+
+---
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
