@@ -55,9 +55,9 @@ export const Signup = () => {
     <>
       <Navbar />
       <div className="flex justify-between min-h-screen text-left">
-        <div className="flex flex-col items-center mx-4 justify-center w-full md:w-1/2 text-gray-500 my-2 dark:text-gray-50">
+        <div className="flex flex-col items-center mx-4 justify-center w-full text-gray-500 my-2 dark:text-gray-50">
           <h2 className="font-semibold text-2xl mb-2 ">Sign Up</h2>
-          <form className="flex flex-col w-full items-center">
+          <form className="flex flex-col w-8/12 items-center">
             <div className="mb-2 text-red-600 font-semibold text-xl">
               {signupError}
             </div>
@@ -159,9 +159,6 @@ export const Signup = () => {
               </NavLink>
             </div>
           </form>
-        </div>
-        <div className="hidden md:block w-1/2  min-h-screen flex flex-col items-center justify-center py-10 px-6">
-          {/* <img src="" alt="signup" /> */}
         </div>
       </div>
     </>

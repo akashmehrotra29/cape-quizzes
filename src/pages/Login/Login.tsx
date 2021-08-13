@@ -50,14 +50,22 @@ export const Login = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const handleAutoFill = () => {
+    setUser({
+      ...user,
+      email: "guestuser@gmail.com",
+      password: "guestuser123",
+    });
+  };
+
   return (
     <>
       <Navbar />
       <div className="flex justify-between min-h-screen">
-        <div className="flex flex-col items-center mx-4 justify-center w-full md:w-1/2 text-gray-500 dark:text-gray-50">
+        <div className="flex flex-col items-center mx-4 justify-center w-full text-gray-500 dark:text-gray-50">
           <h2 className="font-semibold text-2xl mb-6 ">Log In</h2>
           <form
-            className="flex flex-col w-full items-center text-left dark:text-gray-50"
+            className="flex flex-col w-8/12 items-center text-left dark:text-gray-50"
             onSubmit={(e) => handleFormSubmit(e)}
           >
             <div className="mb-6 md:w-9/12 w-full">
@@ -99,14 +107,22 @@ export const Login = () => {
               className="bg-primary hover:bg-hover p-2 md:w-9/12 w-full text-white font-semibold mb-2 rounded-full"
               type="submit"
             >
-              LOGIN
+              LogIn
             </button>
-            <div className="font-medium text-md">
-              Not a member?{" "}
-              <NavLink
-                to="/signup"
-                className="text-primary underline font-bold"
+
+            <div className="font-medium text-md pt-3">
+              <button
+                onClick={handleAutoFill}
+                type="submit"
+                className="text-primary font-bold cursor-pointer"
               >
+                Login as Guest User
+              </button>
+            </div>
+
+            <div className="font-medium text-md pt-3">
+              Not a member?{" "}
+              <NavLink to="/signup" className="text-primary font-bold">
                 Sign Up
               </NavLink>
             </div>
@@ -114,12 +130,6 @@ export const Login = () => {
               {loginError}
             </div>
           </form>
-        </div>
-        <div className="hidden md:block w-1/2  h-screen flex flex-col items-start justify-center py-10 px-6 ">
-          {/* <img
-          src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          alt="login"
-        /> */}
         </div>
       </div>
     </>
